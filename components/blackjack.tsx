@@ -135,7 +135,7 @@ const Blackjack = () => {
       } 
       // REGLA 2 (NUEVA): Si tiene 17 o más (pero no se ha pasado), 
       // tiramos una moneda de 3 caras (1/3 de probabilidad)
-      else if (puntajeCrupier <= 21) {
+      else if (puntajeCrupier <= 21 && puntajeCrupier <= puntosJugador) {
         // Generamos un número entre 0 y 1. Si es menor a 0.33, es un "sí" (33%)
         const esTemerario = Math.random() < 0.33; 
         
