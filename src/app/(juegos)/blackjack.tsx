@@ -32,7 +32,7 @@ const Blackjack = () => {
   const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [mensajeFinal, setMensajeFinal] = useState("");
 
-  // --- 1. LÓGICA DE PUNTOS ---
+
   // Esta función calcula el valor de una mano teniendo en cuenta el AS
   const calcularPuntaje = (cartas: Card[]) => {
     let total = 0;
@@ -112,7 +112,7 @@ const Blackjack = () => {
       setPuntosJugador(puntaje);
 
       if (puntaje > 21) {
-        finalizarJuego(puntaje, puntosCrupier, "¡Te pasaste! Gana la casa.");
+        finalizarJuego("¡Te pasaste! Gana la casa.");
       }
 
     } catch (error) {
@@ -187,10 +187,10 @@ const Blackjack = () => {
     } else {
       mensaje = "Empate.";
     }
-    finalizarJuego(puntosJ, puntosC, mensaje);
+    finalizarJuego(mensaje);
   };
 
-  const finalizarJuego = (pJ: number, pC: number, msg: string) => {
+  const finalizarJuego = (msg: string) => {
     setJuegoTerminado(true);
     setMensajeFinal(msg);
   };
