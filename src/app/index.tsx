@@ -1,4 +1,4 @@
-// src/app/index.tsx
+
 import { useRouter } from 'expo-router';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Proyecto React Native</Text>
-      
+    {/*views con los botones y el onpress para ir a las carpetas*/}
       <View style={styles.buttonContainer}>
         <Button 
           title="Ir a Juegos (Tabs)" 

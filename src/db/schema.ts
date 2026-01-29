@@ -1,4 +1,3 @@
-// src/db/schema.ts
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 // Tabla Tareas

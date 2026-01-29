@@ -1,4 +1,3 @@
-// context/AppContextProvider.tsx
 import React, { createContext, ReactNode, useState } from 'react';
 
 // Definimos qué datos va a tener nuestro contexto

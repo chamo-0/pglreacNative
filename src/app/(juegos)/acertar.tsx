@@ -11,13 +11,13 @@ export default function AcertarNumeroScreen() {
   const drizzleDb = drizzle(db, { schema });
 
   // Estados
-  const [nick, setNick] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [numeroSecreto, setNumeroSecreto] = useState(0);
-  const [intentos, setIntentos] = useState<number[]>([]);
+  const [nick, setNick] = useState('');//aca se guarda el nombre de usuario
+  const [isLoggedIn, setIsLoggedIn] = useState(false);// aca el ID
+  const [numeroSecreto, setNumeroSecreto] = useState(0);//aca el numero secreto
+  const [intentos, setIntentos] = useState<number[]>([]);//aca se guardan los numeros que has usado
   const [vistaRango, setVistaRango] = useState<boolean>(true); // true = ver rangos (0-9), false = ver numeros (20,21...)
   const [rangoSeleccionado, setRangoSeleccionado] = useState(0); // El inicio del rango (ej: 20)
-  const [historial, setHistorial] = useState<any[]>([]);
+  const [historial, setHistorial] = useState<any[]>([]);// aca se guarda tanto el nombre como los numeros que intentaste
   const [verHistorial, setVerHistorial] = useState(false);
 
   // Iniciar juego
@@ -47,7 +47,7 @@ export default function AcertarNumeroScreen() {
 
     if (numero === numeroSecreto) {
       Alert.alert("¡Ganaste!", `El número era ${numeroSecreto}.`);
-      // Guardar en DB (Pág 44-46)
+      // Guardar en DB
       await drizzleDb.insert(partidas).values({
         nick: nick,
         numeroSecreto: numeroSecreto,
@@ -89,7 +89,7 @@ export default function AcertarNumeroScreen() {
         <Text style={styles.title}>Historial de Partidas</Text>
         <FlatList
           data={historial}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(a) => a.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.card}>
               <Text>Jugador: {item.nick}</Text>
@@ -106,6 +106,7 @@ export default function AcertarNumeroScreen() {
   return (
     <ScrollView contentContainerStyle={styles.gameContainer}>
       <Text style={styles.title}>Hola, {nick}</Text>
+      {/*este text lo que hace es ver automaticamente que numeros has intentado y los muestra */}
       <Text>Intentos: {intentos.join(', ')}</Text>
       
       <Button title="Ver Historial" onPress={cargarHistorial} color="gray" />
